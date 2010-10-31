@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../locale/locale.dtd">
+<!--
+ * @file locale.xml
+ *
+ * Copyright (c) 2010 Corey Slavnik and Stéfan Sinclair
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * Localization strings for the en_US (U.S. English) locale.
+ *
+-->
+<!--
+ * On June 2nd, 2010, the Voyeur plugin for Open Journal Systems was created.
+ * This program is distributed under GNU GPL v2, but is based off of the
+ * 'WebFeedPlugin' distributed with Open Journal Systems software, which
+ * was originally created and maintained by John Willinsky. Thank you.
+-->
+ 
+<locale name="en_US" full_name="U.S. English">
+	<message key="plugins.generic.voyeur.displayName">Voyeur Plugin</message>
+	<message key="plugins.generic.voyeur.description"><![CDATA[The <a href="http://voyeurtools.org" target="_new">Voyeur</a> plugin analyzes or "reveals" any text or collection of texts within your installation of OJS.]]></message>
+
+	<message key="plugins.generic.voyeur.settings">Settings</message>
+	<message key="plugins.generic.voyeur.settings.generalSettings">General settings</message>
+	<message key="plugins.generic.voyeur.settings.appearanceSettings">Appearance settings</message>
+	<message key="plugins.generic.voyeur.settings.filterSettings">Filter settings</message>
+	<message key="plugins.generic.voyeur.settings.whereShould">Where should Voyeur appear?</message>
+	<message key="plugins.generic.voyeur.settings.whatShould">What should Voyeur reveal?</message>
+	<message key="plugins.generic.voyeur.settings.issue">Display Voyeur on issue pages only.</message>
+	<message key="plugins.generic.voyeur.settings.homepage">Display Voyeur on homepage and issue pages only.</message>
+	<message key="plugins.generic.voyeur.settings.all">Display Voyeur on all journal pages.</message>
+
+	<message key="plugins.generic.voyeur.settings.entireJournal">Reveal items in entire journal.</message>
+	<message key="plugins.generic.voyeur.settings.currentIssue">Reveal items in current published issue.</message>
+	<message key="plugins.generic.voyeur.settings.currentPage">Reveal items associated with current viewed page.</message>
+	<message key="plugins.generic.voyeur.settings.recentArticles">most recent published items.</message>
+	<message key="plugins.generic.voyeur.settings.allowUser">Allow users to choose Voyeur settings.</message>
+	<message key="plugins.generic.voyeur.settings.forceSingleFile">Reveal only one file from each article. (PDF, DOC, etc.)</message>	
+	<message key="plugins.generic.voyeur.settings.recentItemsRequired">Please enter a positive integer for recent published items.</message>
+
+	<message key="plugins.generic.voyeur.settings.voyeurTime">Filter by time:</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTime_none">None</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTime_day">Last 24 hours</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTime_week">Last week</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTime_2weeks">Last two weeks</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTime_month">Last month</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTime_6months">Last six months</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTime_year">Last year</message>
+
+	<message key="plugins.generic.voyeur.settings.voyeurTool">Tool:</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTool_bubbles">Bubbles</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTool_links">Links</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTool_frequencyGrid">Frequency Grid</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTool_reader">Reader</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTool_summary">Summary</message>
+	<message key="plugins.generic.voyeur.settings.voyeurTool_wordCountFountain">Word Count Fountain</message>
+
+	<message key="plugins.generic.voyeur.settings.voyeurWidth">Width:</message>
+	<message key="plugins.generic.voyeur.settings.voyeurHeight">Height:</message>
+	<message key="plugins.generic.voyeur.settings.allowAutoReveal">Voyeur launches automatically on page load.</message>
+	<message key="plugins.generic.voyeur.settings.viewSeparate">View in separate window</message>
+	<message key="plugins.generic.voyeur.settings.noArticles">There are no articles to reveal.</message>
+	<message key="plugins.generic.voyeur.settings.slogan">reveal your texts</message>
+	<message key="plugins.generic.voyeur.settings.userExplain"><![CDATA[These settings determine which articles <a href="http://voyeurtools.org" target="_new">Voyeur</a> will analyze or "reveal".]]></message>
+	<message key="plugins.generic.voyeur.logo.altText">Voyeur logo</message>
+</locale>
