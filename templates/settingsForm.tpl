@@ -77,6 +77,10 @@
 		<td width="15%" class="label" align="right"><input type="checkbox" name="forceSingleFile" id="forceSingleFile" value="1" {if $forceSingleFile eq '1'}checked="checked" {/if}/></td>
 		<td width="85%" class="value">{translate key="plugins.generic.voyeur.settings.forceSingleFile"}</td>
 	</tr>
+	<tr valign="top">
+		<td width="15%" class="label" align="right"><input type="checkbox" name="removeFuncWords" id="removeFuncWords" value="1" {if $removeFuncWords eq '1'}checked="checked" {/if}/></td>
+		<td width="85%" class="value">{translate key="plugins.generic.voyeur.settings.removeFuncWords"}</td>
+	</tr>
 	<tr>
 		<td colspan="2"><div class="separator">&nbsp;</div></td>
 	</tr>

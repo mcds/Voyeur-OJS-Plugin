@@ -35,7 +35,8 @@
 	<message key="plugins.generic.voyeur.settings.currentPage">Reveal items associated with current viewed page.</message>
 	<message key="plugins.generic.voyeur.settings.recentArticles">most recent published items.</message>
 	<message key="plugins.generic.voyeur.settings.allowUser">Allow users to choose Voyeur settings.</message>
-	<message key="plugins.generic.voyeur.settings.forceSingleFile">Reveal only one file from each article. (PDF, DOC, etc.)</message>	
+	<message key="plugins.generic.voyeur.settings.forceSingleFile">Reveal only one file from each article. (PDF, DOC, etc.)</message>
+  <message key="plugins.generic.voyeur.settings.removeFuncWords">Remove function words like "the".</message>
 	<message key="plugins.generic.voyeur.settings.recentItemsRequired">Please enter a positive integer for recent published items.</message>
 
 	<message key="plugins.generic.voyeur.settings.voyeurTime">Filter by time:</message>

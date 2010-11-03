@@ -60,13 +60,14 @@ class SettingsForm extends Form {
 		$this->setData('allowAutoReveal', $plugin->getSetting($journalId, 'allowAutoReveal'));
 		$this->setData('allowUser', $plugin->getSetting($journalId, 'allowUser'));
 		$this->setData('forceSingleFile', $plugin->getSetting($journalId, 'forceSingleFile'));
+    $this->setData('removeFuncWords', $plugin->getSetting($journalId, 'removeFuncWords'));
 	}
 
 	/**
 	 * Assign form data to user-submitted data.
 	 */
 	function readInputData() {
-		$this->readUserVars(array('displayPage','displayItems','recentItems', 'voyeurWidth', 'voyeurHeight', 'voyeurTime', 'voyeurTool', 'allowAutoReveal', 'allowUser', 'forceSingleFile'));
+		$this->readUserVars(array('displayPage','displayItems','recentItems', 'voyeurWidth', 'voyeurHeight', 'voyeurTime', 'voyeurTool', 'allowAutoReveal', 'allowUser', 'forceSingleFile', 'removeFuncWords'));
 
 		// Check that recent items value is a positive integer
 		if ((int) $this->getData('recentItems') <= 0) $this->setData('recentItems', '');
@@ -103,7 +104,8 @@ class SettingsForm extends Form {
 		$plugin->updateSetting($journalId, 'voyeurTool', $this->getData('voyeurTool'));
 		$plugin->updateSetting($journalId, 'allowAutoReveal', $this->getData('allowAutoReveal'));
 		$plugin->updateSetting($journalId, 'allowUser', $this->getData('allowUser'));
-		$plugin->updateSetting($journalId, 'forceSingleFile', $this->getData('forceSingleFile'));
+    $plugin->updateSetting($journalId, 'forceSingleFile', $this->getData('forceSingleFile'));
+    $plugin->updateSetting($journalId, 'removeFuncWords', $this->getData('removeFuncWords'));
 	}
 
 	/**
@@ -123,6 +125,7 @@ class SettingsForm extends Form {
 		$plugin->updateSetting($journalId, 'allowAutoReveal', '1');
 		$plugin->updateSetting($journalId, 'allowUser', NULL);
 		$plugin->updateSetting($journalId, 'forceSingleFile', '1');
+    $plugin->updateSetting($journalId, 'removeFuncWords', '1');
 		
 		$plugin->updateSetting($journalId, 'enabledClicked', true, 'bool'); // make sure setDefaultSettings does not run again
 	}

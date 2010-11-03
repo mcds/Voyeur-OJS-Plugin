@@ -17,7 +17,6 @@
  *}
 
 {* Add js/css libraries. *}
-<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>-->
 <script type="text/javascript" src="{$pluginURL}/js/jquery-1.3.2.min.js"></script>
 
 {* Only load Thickbox if user has choice of options. *}
@@ -115,13 +114,17 @@
 				} else {
 					var fullVoyeurUrl = 'http://voyeurtools.org/tool/{/literal}{$voyeurTool|escape}{literal}/?' + response;
 				}
+        if ({/literal}{$removeFuncWords}{literal} == 1) { // Add the parameter to remove function words if chosen.
+          fullVoyeurUrl += '&stopList=stop.en.taporware.txt';
+        }
 				voyeurLogo.attr('style', 'display:none;'); // Hide the Voyeur logo when user chooses options.
 				// Change the iFrame link to the custom URL for Voyeur, and remove the iFrame from being hidden
 				voyeurIframe.attr({
 					// This is the URL to be sent to retrieve Voyeur information
 					src: fullVoyeurUrl
 				}).removeAttr('style'); // remove display:none
-				voyeurMessageBox.html('<small><a href="'+ fullVoyeurUrl +'" target="_blank">{/literal}{translate key="plugins.generic.voyeur.settings.viewSeparate"}{literal}</a></small>');
+        voyeurMessageBox.html('');
+				//voyeurMessageBox.html('<small><a href="'+ fullVoyeurUrl +'" target="_blank">{/literal}{translate key="plugins.generic.voyeur.settings.viewSeparate"}{literal}</a></small>');
 			} else { // If no articles to reveal, just display message.
 				voyeurMessageBox.html('<small><i>{/literal}{translate key="plugins.generic.voyeur.settings.noArticles"}{literal}</i></small>');
 			}

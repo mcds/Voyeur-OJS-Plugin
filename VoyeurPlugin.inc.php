@@ -137,6 +137,7 @@ class VoyeurPlugin extends GenericPlugin {
 				$templateManager->assign('displayItems', $this->getSetting($currentJournal->getJournalId(), 'displayItems'));
 				$templateManager->assign('allowAutoReveal', $this->getSetting($currentJournal->getJournalId(), 'allowAutoReveal'));
 				$templateManager->assign('allowUser', $this->getSetting($currentJournal->getJournalId(), 'allowUser'));
+        $templateManager->assign('removeFuncWords', $this->getSetting($currentJournal->getJournalId(), 'removeFuncWords'));
 				// Determine what kind of URL we're dealing with.
 				if (!Request::isPathInfoEnabled()) {
 					$templateManager->assign('uglyUrl', 1);
