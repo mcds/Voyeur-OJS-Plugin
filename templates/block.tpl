@@ -24,7 +24,7 @@
 		src='' style="display:none;" id="voyeurIframe"><p>Your browser does not support iframes - Voyeur will not run.</p></iframe>
 	<div id='voyeurMessageBox'><!-- 'View full page' link (or no articles message) placed dynamically here. --></div>
 	<br />
-	<input alt="#TB_inline?height=275&width=325&inlineId=voyeurControls" title="Voyeur - {translate key='plugins.generic.voyeur.settings.slogan'}" class="thickbox" type="button" value="Reveal" id="voyeurReveal" />
+	<input alt="#TB_inline?height=300&width=325&inlineId=voyeurControls" title="Voyeur - {translate key='plugins.generic.voyeur.settings.slogan'}" class="thickbox" type="button" value="Reveal" id="voyeurReveal" />
 	<div style="display:none">
 		<div id="voyeurControls">
 			<br />
