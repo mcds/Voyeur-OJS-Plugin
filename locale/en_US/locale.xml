@@ -61,7 +61,7 @@
 	<message key="plugins.generic.voyeur.settings.allowAutoReveal">Voyeur launches automatically on page load.</message>
 	<message key="plugins.generic.voyeur.settings.viewSeparate">View in separate window</message>
 	<message key="plugins.generic.voyeur.settings.noArticles">There are no articles to reveal.</message>
-	<message key="plugins.generic.voyeur.settings.slogan">reveal your texts</message>
+	<message key="plugins.generic.voyeur.settings.slogan">Reveal your texts</message>
 	<message key="plugins.generic.voyeur.settings.userExplain"><![CDATA[These settings determine which articles <a href="http://voyeurtools.org" target="_new">Voyeur</a> will analyze or "reveal".]]></message>
 	<message key="plugins.generic.voyeur.logo.altText">Voyeur logo</message>
 </locale>
