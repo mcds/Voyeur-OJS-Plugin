@@ -50,17 +50,17 @@
 			if ('{/literal}{$allowUser|escape}{literal}' != 1) {
 				$('#voyeurReveal').attr('style', 'display:none;');
 			}
-			loadVoyeur(voyeurUrlHolder, voyeurLogo, voyeurIframe, voyeurMessageBox, voyeurAjaxUrl);
+			loadVoyeur(voyeurUrlHolder, voyeurLogo, voyeurIframe, voyeurMessageBox, voyeurAjaxUrl, true);
 		}
 		
 		$('#voyeurReveal').click(function() {
 			if ('{/literal}{$allowUser|escape}{literal}' == 1) {
 				$('#voyeurOptionsSubmit').click(function() {
 					// Send the user input vars to loadVoyeur() for processing and call loadVoyeur().
-					loadVoyeur(voyeurUrlHolder, voyeurLogo, voyeurIframe, voyeurMessageBox, voyeurAjaxUrl, $('#userTool').val(), $('input[name*="userDisplayItems"]:checked').val(), $('#userRecentItems').val(), $('#userTime').val());
+					loadVoyeur(voyeurUrlHolder, voyeurLogo, voyeurIframe, voyeurMessageBox, voyeurAjaxUrl, false, $('#userTool').val(), $('input[name*="userDisplayItems"]:checked').val(), $('#userRecentItems').val(), $('#userTime').val());
 				});
 			} else {
-				loadVoyeur(voyeurUrlHolder, voyeurLogo, voyeurIframe, voyeurMessageBox, voyeurAjaxUrl);
+				loadVoyeur(voyeurUrlHolder, voyeurLogo, voyeurIframe, voyeurMessageBox, voyeurAjaxUrl, false);
 			}
 		});
 	});
@@ -73,7 +73,7 @@
 	*		2 - reveal by recent items
 	*		3 - reveal by current page
 	**/
-	function loadVoyeur(voyeurUrlHolder, voyeurLogo, voyeurIframe, voyeurMessageBox, voyeurAjaxUrl, customTool, customDisplayItems, customRecentItems, customTime) {
+	function loadVoyeur(voyeurUrlHolder, voyeurLogo, voyeurIframe, voyeurMessageBox, voyeurAjaxUrl, autoReveal, customTool, customDisplayItems, customRecentItems, customTime) {
 		if ({/literal}{$uglyUrl}{literal} == 1) { // Find what kind of URL we're dealing with.
 			loadUrl = voyeurAjaxUrl;
 		} else {
@@ -84,16 +84,20 @@
 		// ==   ADD USER DEFINED PARAMS   ==
 		// =================================
 
-		if (typeof customTime != 'undefined') { // Add custom user time filter if set.
-			loadUrl += '&voyeurTime=' + customTime;
-		}
-		// If user has chosen filter by journal or issue...
-		if (typeof customDisplayItems != 'undefined' && (customDisplayItems == 0 || customDisplayItems == 1 || customDisplayItems == 3)) {
-			loadUrl += '&displayItems=' + customDisplayItems;
-		// If user has chosen custom recent items.
-		} else if (typeof customDisplayItems != 'undefined' && customDisplayItems == 2) {
-			loadUrl += '&displayItems=' + customDisplayItems + '&recentItems=' + customRecentItems;	
-		}
+    if (autoReveal == true) { // If we're auto revealing, run a param that explains no user defined params.
+      loadUrl += '&autoReveal=1';
+    } else { // If we are auto revealing, read in user defined params.
+      if (typeof customTime != 'undefined') { // Add custom user time filter if set.
+        loadUrl += '&voyeurTime=' + customTime;
+      }
+      // If user has chosen filter by journal or issue...
+      if (typeof customDisplayItems != 'undefined' && (customDisplayItems == 0 || customDisplayItems == 1 || customDisplayItems == 3)) {
+        loadUrl += '&displayItems=' + customDisplayItems;
+      // If user has chosen custom recent items.
+      } else if (typeof customDisplayItems != 'undefined' && customDisplayItems == 2) {
+        loadUrl += '&displayItems=' + customDisplayItems + '&recentItems=' + customRecentItems;	
+      }
+    }
 		
 		// ======================================
 		// ==   ADD CURRENT PAGE INFO PARAMS   ==

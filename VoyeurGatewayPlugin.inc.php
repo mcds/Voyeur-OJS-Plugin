@@ -149,11 +149,12 @@ class VoyeurGatewayPlugin extends GatewayPlugin {
 		$displayItems = $voyeurPlugin->getSetting($journal->getJournalId(), 'displayItems');
 		$recentItems = (int) $voyeurPlugin->getSetting($journal->getJournalId(), 'recentItems');
 		$allowUser = $voyeurPlugin->getSetting($journal->getJournalId(), 'allowUser');
+    $cleanGet['autoReveal'] = (int) Request::getUserVar('autoReveal'); // Figure out if we run admin settings or user params.
 		$forceSingleFile = $voyeurPlugin->getSetting($journal->getJournalId(), 'forceSingleFile');
 		$publishedArticleDao =& DAORegistry::getDAO('PublishedArticleDAO');
 		$publishedArticleFiles = array();
 
-		if (isset($allowUser)) { // If user can set settings, use $_GET to find their options.
+		if (isset($allowUser) && $cleanGet['autoReveal'] != 1) { // If user can set settings, use $_GET to find their options.
 			$cleanGet['displayItems'] = (int) Request::getUserVar('displayItems'); // Secure our input by only using integers.
 			$cleanGet['voyeurTime'] = Request::getUserVar('voyeurTime');
 			$cleanGet['recentItems'] = (int) abs(Request::getUserVar('recentItems')); // Make sure input is positive integer.
