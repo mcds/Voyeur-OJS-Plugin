@@ -145,9 +145,7 @@ class VoyeurPlugin extends GenericPlugin {
 					$templateManager->assign('uglyUrl', 0);
 				}
 
-				// These vars eventually passed to VoyeurGatewayPlugin to find current page IF admin
-				// has chosen to reveal items by current page.
-				if ($displayItems == 'page') {
+				// These vars eventually passed to VoyeurGatewayPlugin to find current page.
 					$currentPage = Request::getRequestedPage();
 					$currentOp = Request::getRequestedOp();
 					$templateManager->assign('currentPage', $currentPage);
@@ -158,7 +156,6 @@ class VoyeurPlugin extends GenericPlugin {
 							$templateManager->assign('issueNumber', $issueNumber[0]);
 						}
 					}
-				}
 
 				$additionalHeadData = $templateManager->get_template_vars('additionalHeadData');
 				$voyeurHead = $templateManager->fetch('../plugins/generic/voyeur/templates/voyeurHead.php.tpl');

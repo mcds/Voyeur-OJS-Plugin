@@ -74,7 +74,7 @@
 	*		3 - reveal by current page
 	**/
 	function loadVoyeur(voyeurUrlHolder, voyeurLogo, voyeurIframe, voyeurMessageBox, voyeurAjaxUrl, autoReveal, customTool, customDisplayItems, customRecentItems, customTime) {
-		if ({/literal}{$uglyUrl}{literal} == 1) { // Find what kind of URL we're dealing with.
+		if ('{/literal}{$uglyUrl}{literal}' == 1) { // Find what kind of URL we're dealing with.
 			loadUrl = voyeurAjaxUrl;
 		} else {
 			loadUrl = voyeurAjaxUrl + '/?';
@@ -87,6 +87,7 @@
     if (autoReveal == true) { // If we're auto revealing, run a param that explains no user defined params.
       loadUrl += '&autoReveal=1';
     } else { // If we are auto revealing, read in user defined params.
+      loadUrl += '&autoReveal=0';
       if (typeof customTime != 'undefined') { // Add custom user time filter if set.
         loadUrl += '&voyeurTime=' + customTime;
       }
@@ -118,7 +119,7 @@
 				} else {
 					var fullVoyeurUrl = 'http://voyeurtools.org/tool/{/literal}{$voyeurTool|escape}{literal}/?' + response;
 				}
-        if ({/literal}{$removeFuncWords}{literal} == 1) { // Add the parameter to remove function words if chosen.
+        if ('{/literal}{$removeFuncWords}{literal}' == 1) { // Add the parameter to remove function words if chosen.
           fullVoyeurUrl += '&stopList=stop.en.taporware.txt';
         }
 				voyeurLogo.attr('style', 'display:none;'); // Hide the Voyeur logo when user chooses options.
