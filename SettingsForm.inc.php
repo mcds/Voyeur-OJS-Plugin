@@ -118,7 +118,7 @@ class SettingsForm extends Form {
 		$plugin->updateSetting($journalId, 'displayPage', 'all');
 		$plugin->updateSetting($journalId, 'displayItems', 'issue');
 		$plugin->updateSetting($journalId, 'recentItems', '');
-		$plugin->updateSetting($journalId, 'voyeurWidth', '95');
+		$plugin->updateSetting($journalId, 'voyeurWidth', '100');
 		$plugin->updateSetting($journalId, 'voyeurHeight', '250');
 		$plugin->updateSetting($journalId, 'voyeurTime', 'month');
 		$plugin->updateSetting($journalId, 'voyeurTool', 'Cirrus');

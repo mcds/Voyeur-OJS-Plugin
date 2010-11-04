@@ -20,7 +20,7 @@
 	<img id="voyeurLogo" src="{$baseUrl}/plugins/generic/voyeur/templates/images/voyeur.png" alt="{translate key="plugins.generic.voyeur.logo.altText"}" border="0" />
 	<br />
 	{** if values are set, echo them but if they're not use default values **}
-	<iframe width="{if $voyeurWidth}{$voyeurWidth|escape}{else}95{/if}%" height="{if $voyeurHeight}{$voyeurHeight|escape}{else}250{/if}"
+	<iframe width="{if $voyeurWidth}{$voyeurWidth|escape}{else}100{/if}%" height="{if $voyeurHeight}{$voyeurHeight|escape}{else}250{/if}"
 		src='' style="display:none;" id="voyeurIframe"><p>Your browser does not support iframes - Voyeur will not run.</p></iframe>
 	<div id='voyeurMessageBox'><!-- 'View full page' link (or no articles message) placed dynamically here. --></div>
 	<br />
