@@ -130,6 +130,7 @@ class VoyeurPlugin extends GenericPlugin {
 
 			if ( ($currentIssue) && (($displayPage == 'all') || ($displayPage == 'homepage' && (empty($requestedPage) || $requestedPage == 'index' || $requestedPage == 'issue')) || ($displayPage == 'issue' && $displayPage == $requestedPage)) ) {
 				// Assign vars for use in voyeurHead.php.tpl.
+        $templateManager->assign('pageURLStrip', preg_replace('/[\W]/', '', $templateManager->get_template_vars('baseUrl')));
 				$templateManager->assign('pluginURL', $templateManager->get_template_vars('baseUrl').'/plugins/generic/voyeur');
 				$templateManager->assign('voyeurTool', $this->getSetting($currentJournal->getJournalId(), 'voyeurTool'));
 				$templateManager->assign('voyeurWidth', $this->getSetting($currentJournal->getJournalId(), 'voyeurWidth'));

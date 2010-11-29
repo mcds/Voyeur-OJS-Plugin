@@ -296,14 +296,20 @@ class VoyeurGatewayPlugin extends GatewayPlugin {
 
 						$fullArticleUrls[] = $articleFileUrl;
 						$lastArticleFileId = $publishedArticleFiles[$i][$m]->_data['articleId']; // Create reference to last article to check if repeat exists.
+            $allArticleIds[] = $publishedArticleFiles[$i][$m]->_data['articleId'];
+            
+            $unixTimestamps[] = strtotime($publishedArticleFiles[$i][$m]->_data['dateModified']);
 					}
 				}
 			}
 		}
 		unset($lastArticleFileId);
-		
-		$toVoyeurUrl = '';
-		
+    
+    // Add the unique corpus timestamp to the front of the params AND article IDs (using '_' to space them. For added uniqueness.)
+    // (This is the latest timestamp from the articles.)
+    
+		$toVoyeurUrl = max($unixTimestamps) . '_' . implode('', $allArticleIds) . '&'; 
+
 		// Construct URL params.
 		for ($i = 0; $i < count($fullArticleUrls); $i++) {
 			$toVoyeurUrl .= 'input=' . $fullArticleUrls[$i];

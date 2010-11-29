@@ -99,7 +99,7 @@
         loadUrl += '&displayItems=' + customDisplayItems + '&recentItems=' + customRecentItems;	
       }
     }
-		
+
 		// ======================================
 		// ==   ADD CURRENT PAGE INFO PARAMS   ==
 		// ======================================
@@ -115,9 +115,9 @@
 			if (response) { // If we get any URL back...
 				// If user-defined tool, place it in the URL. If not, retrieve admin defined tool.
 				if (typeof customTool != 'undefined') {
-					var fullVoyeurUrl = 'http://voyeurtools.org/tool/' + customTool + '/?' + response;
+					var fullVoyeurUrl = 'http://voyeurtools.org/tool/' + customTool + '/?' + 'corpus=' + '{/literal}{$pageURLStrip}{literal}' + response;
 				} else {
-					var fullVoyeurUrl = 'http://voyeurtools.org/tool/{/literal}{$voyeurTool|escape}{literal}/?' + response;
+					var fullVoyeurUrl = 'http://voyeurtools.org/tool/{/literal}{$voyeurTool|escape}{literal}/?' + 'corpus=' + '{/literal}{$pageURLStrip}{literal}' + response;
 				}
         if ('{/literal}{$removeFuncWords}{literal}' == 1) { // Add the parameter to remove function words if chosen.
           fullVoyeurUrl += '&stopList=stop.en.taporware.txt';
