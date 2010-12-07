@@ -27,5 +27,3 @@ function voyeurUpdateOptions(voyeurSettingsTable, currentTool) {
 		voyeurSettingsTable.find('#removeFuncWords').closest('tr').fadeIn(fadeTime);
 	}
 }
-
-// Added for testing new SSH key.
