@@ -26,7 +26,7 @@
 <form method="post" action="{plugin_url path="settings"}">
 {include file="common/formErrors.tpl"}
 
-<table width="100%" class="data">
+<table width="100%" class="data" id="voyeurSettingsTable">
 	<tr valign="top">
 		<td align="left" width="100%" class="label" colspan="2">
 			<h4>{translate key="plugins.generic.voyeur.settings.generalSettings"}</h4>
@@ -80,6 +80,14 @@
 	<tr valign="top">
 		<td width="15%" class="label" align="right"><input type="checkbox" name="removeFuncWords" id="removeFuncWords" value="1" {if $removeFuncWords eq '1'}checked="checked" {/if}/></td>
 		<td width="85%" class="value">{translate key="plugins.generic.voyeur.settings.removeFuncWords"}</td>
+	</tr>
+	<tr valign="top">
+		<td width="20%" class="label" align="right" valign="bottom"><strong>{translate key="plugins.generic.voyeur.settings.limit"}</strong></td>
+		<td width="80%" valign="bottom"><input type="text" name="voyeurLimit" id="voyeurLimit" value="{$voyeurLimit|escape}" size="2" maxlength="3" class="textField" /></td>
+	</tr>
+	<tr valign="top">
+		<td width="20%" class="label" align="right" valign="bottom"><strong>{translate key="plugins.generic.voyeur.settings.query"}</strong></td>
+		<td width="80%" valign="bottom"><input type="text" name="voyeurQuery" id="voyeurQuery" value="{$voyeurQuery|escape}" size="15" class="textField" /></td>
 	</tr>
 	<tr>
 		<td colspan="2"><div class="separator">&nbsp;</div></td>

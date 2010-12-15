@@ -61,13 +61,15 @@ class SettingsForm extends Form {
 		$this->setData('allowUser', $plugin->getSetting($journalId, 'allowUser'));
 		$this->setData('forceSingleFile', $plugin->getSetting($journalId, 'forceSingleFile'));
     $this->setData('removeFuncWords', $plugin->getSetting($journalId, 'removeFuncWords'));
+    $this->setData('voyeurLimit', $plugin->getSetting($journalId, 'voyeurLimit'));
+    $this->setData('voyeurQuery', $plugin->getSetting($journalId, 'voyeurQuery'));
 	}
 
 	/**
 	 * Assign form data to user-submitted data.
 	 */
 	function readInputData() {
-		$this->readUserVars(array('displayPage','displayItems','recentItems', 'voyeurWidth', 'voyeurHeight', 'voyeurTime', 'voyeurTool', 'allowAutoReveal', 'allowUser', 'forceSingleFile', 'removeFuncWords'));
+		$this->readUserVars(array('displayPage','displayItems','recentItems', 'voyeurWidth', 'voyeurHeight', 'voyeurTime', 'voyeurTool', 'allowAutoReveal', 'allowUser', 'forceSingleFile', 'removeFuncWords', 'voyeurLimit', 'voyeurQuery'));
 
 		// Check that recent items value is a positive integer
 		if ((int) $this->getData('recentItems') <= 0) $this->setData('recentItems', '');
@@ -86,7 +88,17 @@ class SettingsForm extends Form {
 		if ((int) $this->getData('voyeurHeight') <= 0) {
 			$this->setData('voyeurHeight', '');
 		}
+
+		// Check that the Voyeur tool is Cirrus and that voyeur limit value is a positive integer.
+		if ($this->getData('voyeurTool') != 'Cirrus' || (int) $this->getData('voyeurLimit') <= 0) {
+			$this->setData('voyeurLimit', '');
+		}
+		
+		if ($this->getData('voyeurQuery') && $this->getData('voyeurTool') != 'CorpusTypeFrequenciesGrid') {
+			$this->setData('voyeurQuery', '');
+		}
 	}
+	
 
 	/**
 	 * Save settings. 
@@ -106,6 +118,8 @@ class SettingsForm extends Form {
 		$plugin->updateSetting($journalId, 'allowUser', $this->getData('allowUser'));
     $plugin->updateSetting($journalId, 'forceSingleFile', $this->getData('forceSingleFile'));
     $plugin->updateSetting($journalId, 'removeFuncWords', $this->getData('removeFuncWords'));
+    $plugin->updateSetting($journalId, 'voyeurLimit', $this->getData('voyeurLimit'));
+    $plugin->updateSetting($journalId, 'voyeurQuery', $this->getData('voyeurQuery'));
 	}
 
 	/**
@@ -126,6 +140,8 @@ class SettingsForm extends Form {
 		$plugin->updateSetting($journalId, 'allowUser', NULL);
 		$plugin->updateSetting($journalId, 'forceSingleFile', '1');
     $plugin->updateSetting($journalId, 'removeFuncWords', '1');
+    $plugin->updateSetting($journalId, 'voyeurLimit', '');
+    $plugin->updateSetting($journalId, 'voyeurQuery', '');
 		
 		$plugin->updateSetting($journalId, 'enabledClicked', true, 'bool'); // make sure setDefaultSettings does not run again
 	}

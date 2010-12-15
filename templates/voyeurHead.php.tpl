@@ -19,6 +19,10 @@
 {* Add js/css libraries. *}
 <script type="text/javascript" src="{$pluginURL}/js/jquery-1.3.2.min.js"></script>
 
+{if $completeURL|strpos:'VoyeurPlugin' eq true}
+	<script type="text/javascript" src="{$pluginURL}/js/voyeurHeadAdmin.js"></script>
+{/if}
+
 {* Only load Thickbox if user has choice of options. *}
 {if $allowUser eq 1}
 	<script type="text/javascript" src="{$pluginURL}/js/thickbox/thickbox.js"></script>
@@ -115,12 +119,20 @@
 			if (response) { // If we get any URL back...
 				// If user-defined tool, place it in the URL. If not, retrieve admin defined tool.
 				if (typeof customTool != 'undefined') {
-					var fullVoyeurUrl = 'http://voyeurtools.org/tool/' + customTool + '/?' + 'corpus=' + '{/literal}{$pageURLStrip}{literal}' + response;
+					var currentTool = customTool;
 				} else {
-					var fullVoyeurUrl = 'http://voyeurtools.org/tool/{/literal}{$voyeurTool|escape}{literal}/?' + 'corpus=' + '{/literal}{$pageURLStrip}{literal}' + response;
+					var currentTool = '{/literal}{$voyeurTool|escape}{literal}';
 				}
+				// Set the base URL to link to Voyeur.
+				var fullVoyeurUrl = 'http://voyeurtools.org/tool/' + currentTool + '/?' + 'corpus=' + '{/literal}{$pageURLStrip}{literal}' + response;
         if ('{/literal}{$removeFuncWords}{literal}' == 1) { // Add the parameter to remove function words if chosen.
           fullVoyeurUrl += '&stopList=stop.en.taporware.txt';
+        }
+        if ('{/literal}{$voyeurLimit}{literal}' != '' && currentTool == 'Cirrus') { // Add the parameter to add word limit if chosen.
+          fullVoyeurUrl += '&limit=' + '{/literal}{$voyeurLimit}{literal}';
+        }
+        if ('{/literal}{$voyeurQuery}{literal}' != '' && currentTool == 'CorpusTypeFrequenciesGrid') { // Add the parameter to add term query if chosen.
+          fullVoyeurUrl += '&query=' + '{/literal}{$voyeurQuery}{literal}';
         }
 				voyeurLogo.attr('style', 'display:none;'); // Hide the Voyeur logo when user chooses options.
 				// Change the iFrame link to the custom URL for Voyeur, and remove the iFrame from being hidden

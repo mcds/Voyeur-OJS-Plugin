@@ -132,6 +132,7 @@ class VoyeurPlugin extends GenericPlugin {
 				// Assign vars for use in voyeurHead.php.tpl.
         $templateManager->assign('pageURLStrip', preg_replace('/[\W]/', '', $templateManager->get_template_vars('baseUrl')));
 				$templateManager->assign('pluginURL', $templateManager->get_template_vars('baseUrl').'/plugins/generic/voyeur');
+				$templateManager->assign('completeURL', Request::getCompleteUrl());
 				$templateManager->assign('voyeurTool', $this->getSetting($currentJournal->getJournalId(), 'voyeurTool'));
 				$templateManager->assign('voyeurWidth', $this->getSetting($currentJournal->getJournalId(), 'voyeurWidth'));
 				$templateManager->assign('voyeurHeight', $this->getSetting($currentJournal->getJournalId(), 'voyeurHeight'));
@@ -139,6 +140,8 @@ class VoyeurPlugin extends GenericPlugin {
 				$templateManager->assign('allowAutoReveal', $this->getSetting($currentJournal->getJournalId(), 'allowAutoReveal'));
 				$templateManager->assign('allowUser', $this->getSetting($currentJournal->getJournalId(), 'allowUser'));
         $templateManager->assign('removeFuncWords', $this->getSetting($currentJournal->getJournalId(), 'removeFuncWords'));
+        $templateManager->assign('voyeurLimit', $this->getSetting($currentJournal->getJournalId(), 'voyeurLimit'));
+        $templateManager->assign('voyeurQuery', $this->getSetting($currentJournal->getJournalId(), 'voyeurQuery'));
 				// Determine what kind of URL we're dealing with.
 				if (!Request::isPathInfoEnabled()) {
 					$templateManager->assign('uglyUrl', 1);

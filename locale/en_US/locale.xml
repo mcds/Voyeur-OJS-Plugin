@@ -38,6 +38,8 @@
 	<message key="plugins.generic.voyeur.settings.forceSingleFile">Reveal only one file from each article. (PDF, DOC, etc.)</message>
   <message key="plugins.generic.voyeur.settings.removeFuncWords">Remove function words like "the".</message>
 	<message key="plugins.generic.voyeur.settings.recentItemsRequired">Please enter a positive integer for recent published items.</message>
+	<message key="plugins.generic.voyeur.settings.limit">Number of terms to display:</message>
+	<message key="plugins.generic.voyeur.settings.query">Search term:</message>
 
 	<message key="plugins.generic.voyeur.settings.voyeurTime">Filter by time:</message>
 	<message key="plugins.generic.voyeur.settings.voyeurTime_none">None</message>
