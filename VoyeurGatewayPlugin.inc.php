@@ -304,18 +304,24 @@ class VoyeurGatewayPlugin extends GatewayPlugin {
 			}
 		}
 		unset($lastArticleFileId);
-    
-    // Add the unique corpus timestamp to the front of the params AND article IDs (using '_' to space them. For added uniqueness.)
-    // (This is the latest timestamp from the articles.)
-    
-		$toVoyeurUrl = max($unixTimestamps) . '_' . implode('', $allArticleIds) . '&'; 
 
-		// Construct URL params.
-		for ($i = 0; $i < count($fullArticleUrls); $i++) {
-			$toVoyeurUrl .= 'input=' . $fullArticleUrls[$i];
-			if ($i != (count($fullArticleUrls) - 1)) { // If we're at last file, do not add '&'
-				$toVoyeurUrl .= '&';
+		$toVoyeurUrl = '';
+    if (isset($unixTimestamps) && isset($allArticleIds)) {
+      // Add the unique corpus timestamp to the front of the params AND article IDs (using '_' to space them. For added uniqueness.)
+    	// (This is the latest timestamp from the articles.)
+			$toVoyeurUrl = max($unixTimestamps) . '_' . implode('', $allArticleIds) . '&'; 
+		}
+		
+		// Only construct the URL params if there are any articles to construct.
+		if (isset($fullArticleUrls)) {
+			for ($i = 0; $i < count($fullArticleUrls); $i++) {
+				$toVoyeurUrl .= 'input=' . $fullArticleUrls[$i];
+				if ($i != (count($fullArticleUrls) - 1)) { // If we're at last file, do not add '&'
+					$toVoyeurUrl .= '&';
+				}
 			}
+		} else {
+			$toVoyeurUrl = '';
 		}
 
 		// Finally, assign the final URL to our template.
