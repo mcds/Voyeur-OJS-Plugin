@@ -250,20 +250,21 @@ class VoyeurGatewayPlugin extends GatewayPlugin {
 			}
 			
 		} else { // If admin has chosen to display all items from current issue.
-			$publishedArticleObjects = &$publishedArticleDao->getPublishedArticlesInSections($issue->getIssueId());
+			$publishedArticleObjects = &$publishedArticleDao->getPublishedArticles($issue->getIssueId());
 			$articleFileDao =& DAORegistry::getDAO('ArticleFileDAO');
 
-			// Get all article files from our filtered article ids (NOTE: $i begins at 1 due to
-			// method of array construction within getPublishedArticlesInSections)
-			for ($i = 1; $i <= count($publishedArticleObjects); $i++) {
-				for ($m = 0; $m < count($publishedArticleObjects[$i]['articles']); $m++) {
-					// Check if the article's 'date published' is within bounds of our time filter.
-					if (strtotime($publishedArticleObjects[$i]['articles'][$m]->_data['datePublished']) >= $timeFilter) {
-						$publishedArticleFiles[] = &$articleFileDao->getArticleFilesByArticle($publishedArticleObjects[$i]['articles'][$m]->_data['articleId']);
-					}
+			// Cycle through $publishedArticleObjects and pick out their articleIds.
+			for ($i = 0; $i < count($publishedArticleObjects); $i++) {
+				// Check if the article's 'date published' is within bounds of our time filter.
+				if (strtotime($publishedArticleObjects[$i]->_data['datePublished']) >= $timeFilter) {
+					$publishedArticleFiles[] = &$articleFileDao->getArticleFilesByArticle($publishedArticleObjects[$i]->_data['articleId']);
 				}
 			}
 		}
+		
+		
+		//print_R($publishedArticleFiles);
+		
 		
 		$galleyDao =& DAORegistry::getDAO('ArticleGalleyDAO');
 		
@@ -278,6 +279,10 @@ class VoyeurGatewayPlugin extends GatewayPlugin {
 				if (!isset($forceSingleFile) || $publishedArticleFiles[$i][$m]->_data['articleId'] != $lastArticleFileId) {
 					if ($publishedArticleFiles[$i][$m]->_data['type'] == 'public') { // Only observe public article files.
 						$currentGalley = &$galleyDao->getGalleysByArticle($publishedArticleFiles[$i][$m]->_data['articleId']); // Need to get galley to complete URL.
+						
+						
+						//print_R($currentGalley);
+						
 						foreach ($currentGalley as $id) { // Find which galley we need by article file id.
 							if ($id->_data['fileId'] == $publishedArticleFiles[$i][$m]->_data['fileId'])
 								$correctGalley = $id->_data['galleyId'];

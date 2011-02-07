@@ -4,25 +4,30 @@
 === Authors: Corey Slavnik <corey@coreyslavnik.com> and Stéfan Sinclair <sgs@mcmaster.ca>
 ================================
 
+
 About
 -----
 This plugin for OJS 2 provides the functionality of Voyeur Tools for analysis of any OJS website's content.
 Voyeur is a web-based text analysis environment. It is designed to be user-friendly, flexible and powerful.
 Voyeur is part of the Hermeneuti.ca, a collaborative project to develop and theorize text analysis tools and text analysis rhetoric.
 
+
 License
 -------
 This plugin is licensed under the GNU General Public License v2. See the file COPYING for the complete terms of this license.
 
+
 System Requirements
 -------------------
 Same requirements as the OJS 2.2 core.
+
 
 Installation
 ------------
 To install the plugin:
  - Place the 'voyeur' folder in your OJS plugins folder. (/plugins/generic/)
  - Enable the plugin by going to:  Home > User > Journal Management > Plugin Management  and selecting "ENABLE" under "Voyeur Plugin"
+
 
 Configuration
 ------------
@@ -42,9 +47,11 @@ The plugin can be configured to display a Voyeur analysis of OJS in the sidebar.
 		- "Reveal items associated with current viewed page.": Performs an analysis on items associated with the current page viewed by a user.
 		- "Filter by time": Filters by a certain time period.
 
+
 Known Issues
 ------------
 	- "Communication failure" will occur if Voyeur is interrupted whilst loading content.
+	- If 'journal initials' are changed, URLs containing previous initials still exist as paths to articles. This plugin always takes the newest initials and uses them for URL construction.
 
 
 Contact/Support
